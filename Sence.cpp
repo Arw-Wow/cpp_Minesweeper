@@ -6,7 +6,7 @@ void Sence::Init(int _row, int _col, int _boomNum)
 
 	row = _row;
 	col = _col;
-	boomNum = _boomNum;
+	boomNum = _boomNum >= row * col ? row * col - 1 : _boomNum;
 	board = new int* [row];
 	for (int i = 0; i < row; i++) {
 		board[i] = new int[col];
@@ -20,9 +20,14 @@ void Sence::Init(int _row, int _col, int _boomNum)
 		FlagBoard[i] = new bool[col];
 	}
 
-	for (int i = 0; i < boomNum; i++) {	//随机生成 boomNum 个炸弹
-		// bug::重复防雷
-		board[rand() % row][rand() % col] = BOOM; //BOOM 为 -1
+	int i = boomNum;
+	while (i) {	//随机生成 boomNum 个炸弹
+		int r = rand() % row;
+		int l = rand() % col;
+		if (board[r][l] == BOOM)
+			continue;
+		board[r][l] = BOOM; //BOOM 为 -1
+		i--;
 	}
 
 	caculate();	//生成各个格子数字
