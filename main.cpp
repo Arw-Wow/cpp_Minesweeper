@@ -13,7 +13,7 @@ int main() {
 	cout << "列：";		cin >> col;
 	cout << "雷的数量：";	cin >> boomNum;
 	
-	initgraph(col * GridSize, row * GridSize + row * 6);
+	initgraph(col * GridSize, row * GridSize + 40);
 	setbkcolor(RGB(224, 224, 224));
 	cleardevice();
 
@@ -34,14 +34,17 @@ int main() {
 // int main() {
 //	// 切分获取各个图片
 
-//	initgraph(83 * 12, 83);
+//	initgraph(39 * 12, 39);
 //	IMAGE* m = new IMAGE;
-//	loadimage(m, "res/image/total.png");
+//	loadimage(m, "res/image/total.png", 39 * 12, 39);
 //	putimage(0, 0, m);
 
 //	IMAGE* get_m = new IMAGE[12];
 //	for (int i = 0; i < 12; i++) {
-//		getimage(&get_m[i], 1 + i * 78, 4, 78, 78);
+//		if (i <= 2)
+//			getimage(&get_m[i], 2 + i * 39, 1, 38, 38);
+//		else
+//			getimage(&get_m[i], i * 39, 1, 38, 38);
 //	}
 
 
@@ -63,13 +66,13 @@ int main() {
 // int main() {
 //	// 切分获取redboom图片
 
-//	initgraph(100, 100);
+//	initgraph(39, 39);
 //	IMAGE* m = new IMAGE;
-//	loadimage(m, "res/image/redboom.png", GridSize, GridSize + 1);
+//	loadimage(m, "res/image/redboom.png", 39, 39);
 //	putimage(0, 0, m);
 
 //	IMAGE* get_m = new IMAGE;
-//	getimage(get_m, 0, 0, GridSize, GridSize);
+//	getimage(get_m, 0, 0, 39, 39);
 
 //	saveimage("res/image/-2.png", get_m);
 

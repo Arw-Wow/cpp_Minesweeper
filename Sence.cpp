@@ -7,14 +7,17 @@ void Sence::Init(int _row, int _col, int _boomNum)
 	row = _row;
 	col = _col;
 	boomNum = _boomNum >= row * col ? row * col - 1 : _boomNum;
+
 	board = new int* [row];
 	for (int i = 0; i < row; i++) {
 		board[i] = new int[col];
 	}
+
 	HideBoard = new bool* [row];
 	for (int i = 0; i < row; i++) {
 		HideBoard[i] = new bool[col];
 	}
+	
 	FlagBoard = new bool* [row];
 	for (int i = 0; i < row; i++) {
 		FlagBoard[i] = new bool[col];
@@ -27,7 +30,7 @@ void Sence::Init(int _row, int _col, int _boomNum)
 		if (board[r][l] == BOOM)
 			continue;
 		board[r][l] = BOOM; //BOOM 为 -1
-		i--;
+		--i;
 	}
 
 	caculate();	//生成各个格子数字
@@ -122,11 +125,11 @@ void Sence::displayText()
 	// char str[25] = { 0 };
 
 	settextcolor(getbkcolor());	//将文字设置为背景色，再输出一遍，即可消除上一次的文字！
-	outtextxy(col * GridSize - 130, row * GridSize + row * 2, str);
+	outtextxy(col * GridSize - 130, row * GridSize + 10, str);
 
 	settextcolor(BLACK);
 	sprintf_s(str, sizeof(str), "还剩 %d 颗雷", getLeftBoomNum());
-	outtextxy(col * GridSize - 130, row * GridSize + row * 2, str);
+	outtextxy(col * GridSize - 130, row * GridSize + 10, str);
 }
 
 void Sence::displayTime()
@@ -137,11 +140,11 @@ void Sence::displayTime()
 	static char str[25] = { 0 };
 
 	// settextcolor(getbkcolor());	//将文字设置为背景色，再输出一遍，即可消除上一次的文字！
-	// outtextxy(30, row * GridSize + row * 2, str);
+	// outtextxy(30, row * GridSize + 10, str);
 
 	settextcolor(BLACK);
 	sprintf_s(str, sizeof(str), "用时：%d", (int)(curTime - beginTime) / 1000);
-	outtextxy(30, row * GridSize + row * 2, str);
+	outtextxy(30, row * GridSize + 10, str);
 }
 
 void Sence::InitBoard()

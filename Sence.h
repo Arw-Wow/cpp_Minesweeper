@@ -12,7 +12,7 @@ using namespace std;
 #define REDBOOM -2
 #define HIDE 10
 #define FLAG 11
-#define GridSize 78
+#define GridSize 39
 
 class Sence
 {
